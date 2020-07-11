@@ -2,7 +2,7 @@
     <header>
         <!--<h1 :class="$style.myTitle">积分商城</h1>-->
       <div class="my-header">
-        <div class="logo" style="color: #555"><span class="logo-icon"></span>weibo</div>
+        <div class="logo" style="color: #555"><span class="logo-icon"></span>数据统计</div>
         <div class="user-info"><span class="login-out" @click="loginOut">退出</span></div>
       </div>
     </header>
@@ -37,7 +37,7 @@
     width: 40px;
     height: 40px;
     display: inline-block;
-    background: url("../static/weibo.png") center no-repeat;
+    background: url("../static/re.png") center no-repeat;
     background-size: contain;
   }
   .my-header {

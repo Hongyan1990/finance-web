@@ -7,7 +7,7 @@ const routes = [
 	},
 	{
 		path: '/order',
-		component: () => import('../views/AdminOrder.vue')
+		component: () => import('../views/chart.vue')
 	},
 	{
 		path: '/user',

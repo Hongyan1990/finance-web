@@ -21,8 +21,10 @@
   "homepage": "https://github.com/Hongyan1990/my-order#readme",
   "dependencies": {
     "axios": "^0.19.2",
+    "echarts": "^4.8.0",
     "element-ui": "^2.13.2",
     "sha1": "^1.1.1",
+    "v-charts": "^1.19.0",
     "vue": "^2.6.11",
     "vue-router": "^3.1.6"
   },

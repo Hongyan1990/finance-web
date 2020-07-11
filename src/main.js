@@ -6,6 +6,8 @@ import {
   Tooltip, Upload, Loading, Message, Tabs, TabPane, Avatar,
     Card, Pagination
 } from 'element-ui'
+import VeHistogram from 'v-charts/lib/histogram.common'
+import VePie from 'v-charts/lib/pie.common'
 
 import App from './app.vue'
 // /home/hongyan/Desktop/hongyan/my-order/dist
@@ -14,6 +16,9 @@ import cookie from './util/cookie.js'
 import './style.css'
 
 Vue.use(Router)
+
+Vue.component(VeHistogram.name, VeHistogram)
+Vue.component(VePie.name, VePie)
 
 Vue.use(Button)
 Vue.use(Container)
