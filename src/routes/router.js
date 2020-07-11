@@ -11,7 +11,7 @@ const routes = [
 	},
 	{
 		path: '/user',
-		component: () => import('../views/UserOrder.vue')
+		component: () => import('../views/AdminOrder.vue')
 	},
 	{
 		path: '/login',

@@ -9,7 +9,7 @@ const config = merge(baseConfig, {
 	    filename: '[name].bundle.js'
 	},
 	devServer: {
-		port: 8000,
+		port: 8001,
     	host: '0.0.0.0',
 		hot: true,
 		headers: { 'Access-Control-Allow-Origin': '*' },
