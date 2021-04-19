@@ -2,7 +2,7 @@
     <header>
         <!--<h1 :class="$style.myTitle">积分商城</h1>-->
       <div class="my-header">
-        <div class="logo" style="color: #555"><span class="logo-icon"></span>数据统计</div>
+        <div class="logo" style="color: #555"><span class="logo-icon"></span>家庭财务管理</div>
         <div class="user-info"><span class="login-out" @click="loginOut">退出</span></div>
       </div>
     </header>

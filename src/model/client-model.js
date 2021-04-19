@@ -38,19 +38,46 @@ const handleRequest = (request) => {
 }
 
 module.exports = {
-  getAllMenus (table) {
-    return handleRequest(request.get(`api/data/?tableName=${table}`))
+  addBookType (data) {
+    return handleRequest(request.post('api/booktype', data))
   },
-  addMenu (data) {
-    return handleRequest(request.post('api/data/', {tableName: 'shop', 'object': data}))
+  getBookTypes (data) {
+    return handleRequest(request.get(`api/booktypes`, data))
   },
-  updateMenu (data) {
-    return handleRequest(request.post('api/data/', {tableName: 'shop', 'object': data}))
+  addBook (data) {
+    return handleRequest(request.post('api/book', data))
   },
-  deleteMenu (id) {
-    return handleRequest(request.delete(`api/data/?tableName=shop&rowKey=${id}`))
+  getBooks (cId, pageNo, pageSize) {
+    return handleRequest(request.get(`api/books?cId=${cId}&pageNo=${pageNo}&pageSize=${pageSize}`))
   },
-  addOrder (data) {
-    return handleRequest(request.post('api/data/', {tableName: 'order', 'object': data}))
+  login (data) {
+    return handleRequest(request.post('api/user', data))
+  },
+  register(data) {
+    return handleRequest(request.post('api/register', data))
+  },
+  queryCarId(uid) {
+    return handleRequest(request.get(`api/car/${uid}`))
+  },
+  addBookToCar(data) {
+    return handleRequest(request.post('api/batch', data))
+  },
+  queryCarBooks(carId, state) {
+    return handleRequest(request.get(`api/batch?carId=${carId}&state=${state}`))
+  },
+  removeBatch(batchId) {
+    return handleRequest(request.delete(`api/batch/${batchId}`))
+  },
+  updateBatch(data) {
+    return handleRequest(request.put(`api/batch`, data))
+  },
+  saveOrder(data) {
+    return handleRequest(request.post('api/order', data))
+  },
+  queryOrder(userId, state) {
+    return handleRequest(request.get(userId?`api/order?userId=${userId}&state=${state}`:`api/order`))
+  },
+  editOrder(data) {
+    return handleRequest(request.put(`api/order`, data))
   }
 }

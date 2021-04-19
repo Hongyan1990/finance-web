@@ -1,15 +1,15 @@
 <template>
   <div class="login-bg">
-    <h1>RecommendSystem</h1>
+    <h1>家庭财务管理系统</h1>
     <form class="login" @submit="login">
-      <h2>
-        <span>Login</span>
+      <h2 style="text-align: center;">
+        <span>登&nbsp;&nbsp;录</span>
         <span class="error-msg" v-show="errMsg">{{errMsg}}</span>
       </h2>
-      <input type="text" class="login-input" v-model="username" placeholder="User Name">
-      <input type="password" class="login-input" v-model="password" placeholder="Password" autocomplete="new-password">
-      <!--<button type="submit" class="login-btn">登 录</button>-->
-      <el-button type="primary" native-type="submit" size="small" style="width: 30%; margin: 20px auto;">登 录</el-button>
+      <input type="text" class="login-input" v-model="username" placeholder="用户名">
+      <input type="password" class="login-input" v-model="password" placeholder="密码" autocomplete="new-password">
+      <el-button type="success" round native-type="submit" size="small" style="width: 30%; margin: 20px auto;">{{state==="0"?'登 录':'注 册'}}</el-button>
+      <el-link type="warning" @click="register">{{state==="0"?'注 册':'登 录'}}</el-link>
     </form>
 
   </div>
@@ -17,6 +17,7 @@
 
 <script>
 import cookie from '../util/cookie.js'
+import {login, register} from "../model/client-model.js";
 export default {
   name: 'Login',
   metaInfo: {
@@ -26,21 +27,40 @@ export default {
     return {
       errMsg: '',
       username: '',
-      password: ''
+      password: '',
+      state: '0'
     }
   },
   methods: {
-    login (e) {
+    async login (e) {
     	e.preventDefault()
-    	if(this.validteForm()) {
-    		cookie.setCookie('username', this.username, 1)
-        if(this.username === 'admin') {
-          this.$router.push('/order')
-        } else {
-          this.$router.push('/user')
+    	if(this.validteForm() && this.state === "0") {
+        const res = await login({uname: this.username, upwd: this.password});
+        console.log(res)
+        if (res.state === '1') {
+          this.errMsg = '用户不存在'
+        }
+        if (res.state === '2') {
+          this.errMsg = '密码不正确'
+        }
+        if(res.state === '0') {
+          this.errMsg = ''
+          cookie.setCookie('username', this.username, 1)
+          cookie.setCookie('uid', res.uid, 1)
+          cookie.setCookie('auth', res.auth, 1)
+          this.$router.push('/main')
         }
 			  
-    	}
+    	} else if(this.validteForm() && this.state === "1") {
+        const res = await register({uname: this.username, upwd: this.password});
+        cookie.setCookie('username', this.username, 1)
+        cookie.setCookie('uid', res.id, 1)
+        cookie.setCookie('auth', res.auth, 1)
+        this.$router.push('/main')
+      }
+    },
+    register() {
+      this.state =this.state === "1" ? "0" : "1";
     },
     validteForm () {
       if (!this.username) {
@@ -51,16 +71,7 @@ export default {
         this.errMsg = '密码不能为空'
         return false
       }
-      if (this.username === 'admin' && this.password !== 'admin') {
-      	this.errMsg = '密码不正确'
-      	return false
-      }
-      if (this.username !== 'admin' && this.password !== '123456') {
-      	this.errMsg = '密码不正确'
-      	return false
-      }
-      this.errMsg = ''
-      return true
+      return true;
     }
   }
 }
@@ -74,7 +85,7 @@ export default {
   margin: 30px auto 0;
   display: flex;
   flex-direction: column;
-
+  border-radius: 8px;
 }
   .login h2 {
     font-weight: normal;
@@ -123,6 +134,6 @@ export default {
   }
   .login-bg h1 {
     color: #fff;
-    font-family: fantasy;
+    font-family: cursive;
   }
 </style>

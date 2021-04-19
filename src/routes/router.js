@@ -3,15 +3,27 @@ import Router from 'vue-router'
 const routes = [
 	{
 		path: '/',
-		redirect: '/order'
+		redirect: '/main'
 	},
 	{
-		path: '/order',
-		component: () => import('../views/chart.vue')
+		path: '/main',
+		component: () => import('../views/Main.vue')
 	},
 	{
-		path: '/user',
-		component: () => import('../views/AdminOrder.vue')
+		path: '/pay',
+		component: () => import('../views/ImcomePay.vue')
+	},
+	{
+		path: '/manager',
+		component: () => import('../views/Manager.vue')
+	},
+	{
+		path: '/car',
+		component: () => import('../views/Car.vue')
+	},
+	{
+		path: '/myOrder',
+		component: () => import('../views/MyOrder.vue')
 	},
 	{
 		path: '/login',

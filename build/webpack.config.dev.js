@@ -10,12 +10,12 @@ const config = merge(baseConfig, {
 	},
 	devServer: {
 		port: 8001,
-    	host: '0.0.0.0',
+    host: '0.0.0.0',
 		hot: true,
 		headers: { 'Access-Control-Allow-Origin': '*' },
 	    proxy: {
 	      '/api': {
-	        target: 'http://192.168.18.99:8080',
+	        target: 'http://localhost:8080',
 	        changeOrigin: true
 	      }
 	    },

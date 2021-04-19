@@ -1,7 +1,7 @@
 <template>
   <div style="padding: 10px;">
 <!--    <ve-histogram :data="chartData" :settings="chartSettings"></ve-histogram>-->
-    <div style="margin: 0 10px;box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.2), 0px 3px 10px 0px rgba(0, 0, 0, 0.19);">
+    <div style="margin: 20px 10px;box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.2), 0px 3px 10px 0px rgba(0, 0, 0, 0.19);">
       <el-table
           :data="recommendData"
           v-loading="loading"
@@ -82,30 +82,30 @@
         chartData1: {
           columns: ['date', 'PV'],
           rows: [
-            { "date": "06-29", "PV": 680},
-            { "date": "06-30", "PV": 367},
-            { "date": "07-01", "PV": 822},
-            { "date": "07-02", "PV": 604},
-            { "date": "07-03", "PV": 847},
-            { "date": "07-04", "PV": 570},
-            { "date": "07-05", "PV": 1050}
+            { "date": "2013-09-18", "PV": 12},
+            { "date": "2013-09-19", "PV": 12.2},
+            { "date": "2013-09-20", "PV": 12.5},
+            { "date": "2013-09-21", "PV": 14},
+            { "date": "2013-09-22", "PV": 7},
+            { "date": "2013-09-23", "PV": 7.5},
+            { "date": "2013-09-24", "PV": 12.3}
           ]
         },
         chartData2: {
           columns: ['type', 'count'],
           rows: [
             { "type": "搜索引擎", "count": 501 },
-            { "type": "视频广告", "count": 420 },
-            { "type": "联盟广告", "count": 281 },
-            { "type": "邮件营销", "count": 711 },
-            { "type": "直接访问", "count": 312 }
+            { "type": "视频广告", "count": 300 },
+            { "type": "联盟广告", "count": 290 },
+            { "type": "邮件营销", "count": 480 },
+            { "type": "直接访问", "count": 479 }
           ]
         },
         loading: false,
         recommendData: [
-          {"date": "2020-06-29", "pv": "680", "uv": "110", "ip": "521", "new_uv": "480", "count": "409"},
-          {"date": "2020-06-30", "pv": "367", "uv": "390", "ip": "769", "new_uv": "588", "count": "301"},
-          {"date": "2020-07-01", "pv": "822", "uv": "266", "ip": "441", "new_uv": "860", "count": "570"}
+          {"date": "1001", "pv": "4702", "uv": "3096", "ip": "2880", "new_uv": "2506", "count": "3773"},
+          {"date": "1002", "pv": "7528", "uv": "4860", "ip": "4435", "new_uv": "4209", "count": "5975"},
+          {"date": "1003", "pv": "7286", "uv": "4741", "ip": "4409", "new_uv": "4026", "count": "5817"}
         ],
       }
     }
